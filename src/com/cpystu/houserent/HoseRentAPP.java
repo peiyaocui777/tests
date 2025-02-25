@@ -16,6 +16,15 @@ public class HoseRentAPP {
         */
         //创建匿名对象调用主菜单
         new HouseView().mainMenu();//？？匿名对象
+        /**
+         * 匿名对象就是 没有参数接受 引用它 直接调用方法  临时对象   适合只调用一次的场景  （后面用的少一些）
+         * 示例
+         * new HouseView().mainMenu();
+         *
+         *  HouseView hs=new HouseView();
+         *         hs.mainMenu();//调用
+         *         这样写 不是有个 hs 引用了他
+         */
         //mainMenu中有个循环，只要循环不退出就不会执行下面这句代码
         System.out.println("==你退出了系统==");//退出时提示信息
     }

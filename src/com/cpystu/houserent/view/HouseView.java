@@ -11,7 +11,12 @@ import com.cpystu.houserent.utils.Utility;
 public class HouseView {
     //类似零钱通的界面显示，使用do-while循环
     //定义变量loop控制循环是否结束
-    private boolean loop=true;//?属性有默认返回值，变量没有（我不确定）
+    private boolean loop =true;//?属性有默认返回值，变量没有（我不确定）
+    //TODO
+    /**
+     * 是的 类变量有默认值 private boolean loop; ====> 这样写编译器并没有报错
+     * 方法周变量没有 需要设置
+     */
     //定义变量key接收输入信息
     private char key=' ';//'空格'
     //1.显示一个主菜单
