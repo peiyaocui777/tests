@@ -8,6 +8,6 @@ public class SmallChangeSysAPP {
     public static void main(String[] args) {
         //直接输入"main"与psvm是一样的效果
         new SmallchangeSysOOP().mainMenu();
-        System.out.println("cs");
+        System.out.println("我要提交了 ");
     }
 }
