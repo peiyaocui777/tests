@@ -1,3 +1,5 @@
+package com.cpystu.basic;
+
 public class Whiletest {
     public static void main(String[] args) {
         int n=3;

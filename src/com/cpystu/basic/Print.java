@@ -1,3 +1,5 @@
+package com.cpystu.basic;
+
 public class Print {
     //根据行。列。字符打印对应行数 列数 的字符
     //如4行4列#

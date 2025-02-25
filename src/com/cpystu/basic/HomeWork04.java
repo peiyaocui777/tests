@@ -1,3 +1,5 @@
+package com.cpystu.basic;
+
 public class HomeWork04 {
     //输出a-z Z-A
 

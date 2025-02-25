@@ -1,3 +1,5 @@
+package com.cpystu.basic;
+
 import java.util.Scanner;
 
 public class Fortest {

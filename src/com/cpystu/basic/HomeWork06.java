@@ -1,5 +1,6 @@
-import com.sun.jdi.PathSearchingVirtualMachine;
-import com.sun.source.tree.ReturnTree;
+package com.cpystu.basic;
+
+import com.cpystu.basic.AA;
 
 public class HomeWork06 {//主类
     //编写一个AA类，他有一个方法是判断一个数是奇数还是偶数，返回值为boolean类型

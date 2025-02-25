@@ -1,3 +1,5 @@
+package com.cpystu.basic;
+
 public class Test99 {
     public static void main(String[] args) {
         //打印99乘法表 外层从1-9 内层每次循环都-1

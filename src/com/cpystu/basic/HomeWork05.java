@@ -1,3 +1,5 @@
+package com.cpystu.basic;
+
 public class HomeWork05 {
     //求1+（1+2）+（1+2+3）+。。。+（1+2+3+...+100）
     //分析：再另外定义一个变量来存放循环后累加的值，第一次循环时num=1
