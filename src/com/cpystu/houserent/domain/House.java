@@ -28,7 +28,7 @@ public class House {
     }
     //getter setter方法
 
-    public int getId() {
+    public int getId(int idCounter) {
         return id;
     }
 
@@ -81,11 +81,15 @@ public class House {
     @Override
     public String toString() {//调整成我们需要的格式
         return  id +
-                "\t" + Name +
-                "\t" + phone +
-                "\t" + address +
-                "\t" + rent +
-                "\t" + state ;
+                "\t\t" + Name +
+                "\t\t" + phone +
+                "\t\t" + address +
+                "\t\t" + rent +
+                "\t\t" + state ;
         //
+    }
+
+    public int getId() {
+        return 0;
     }
 }
