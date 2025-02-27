@@ -47,6 +47,7 @@ public class HouseView {
             //del()返回一个boolean值，对其进行判断
             if (houseService.del(delId)){
                 System.out.println("---------删除房屋信息成功--------");
+                return;
             }else {
                 System.out.println("---------房屋编号不存在，删除失败--------");
             }
@@ -75,6 +76,7 @@ public class HouseView {
         //id是系统分配的但是创建对象的时候也要填上
         if (houseService.add(newHouse)){
             System.out.println("------------添加房屋成功------------");
+            return;
         }else {
             System.out.println("------------添加房屋失败------------");
         }
