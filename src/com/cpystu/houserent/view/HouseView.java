@@ -4,8 +4,6 @@ import com.cpystu.houserent.domain.House;
 import com.cpystu.houserent.service.HouseService;
 import com.cpystu.houserent.utils.Utility;
 
-import java.sql.SQLOutput;
-
 /*
 * 这个类要实现的功能
 * 1.显示界面
@@ -23,7 +21,16 @@ public class HouseView {
      */
     //定义变量key接收输入信息
     private char key=' ';//'空格'
-    private HouseService houseService=new HouseService(10);//??为什么在这个位置设置数组大小为10（调用时）
+    private HouseService houseService = new HouseService(2);//??为什么在这个位置设置数组大小为10（调用时）
+
+    //写一个退出确认的方法
+    public void exit() {
+        char c = Utility.readConfirmSelection();//Utility方法中有这个循环确认功能，直接调用
+        if (c == 'Y') {//判断c的值是Y还是N
+            loop = false;
+        }
+    }
+
     //编写delHouse（）接收输入的id，调用Service的del方法
     public void delHouse(){
         System.out.println("---------删除房屋信息--------");//先打印界面
@@ -128,8 +135,7 @@ public class HouseView {
                     listHouses();
                     break;//不要忘记break
                 case '6':
-                    System.out.println("退       出");
-                    loop=false;
+                    exit();
                     break;//不要忘记break
             }
         }while (loop);//;

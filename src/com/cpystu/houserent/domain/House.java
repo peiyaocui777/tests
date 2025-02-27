@@ -82,10 +82,10 @@ public class House {
     public String toString() {//调整成我们需要的格式
         return  id +
                 "\t\t" + Name +
-                "\t\t" + phone +
+                "\t" + phone +
                 "\t\t" + address +
-                "\t\t" + rent +
-                "\t\t" + state ;
+                "\t" + rent +
+                "\t" + state ;
         //
     }
 
