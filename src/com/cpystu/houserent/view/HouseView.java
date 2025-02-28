@@ -21,8 +21,64 @@ public class HouseView {
      */
     //定义变量key接收输入信息
     private char key=' ';//'空格'
-    private HouseService houseService = new HouseService(2);//??为什么在这个位置设置数组大小为10（调用时）
-
+    private HouseService houseService = new HouseService(3);//??为什么在这个位置设置数组大小为10（调用时）
+    //根据id修改房屋信息
+    public void update(){
+        System.out.println("---------修改房屋信息--------");
+        System.out.print("请输入待修改房屋编号（-1退出）");
+        int updateId = Utility.readInt();
+        if (updateId==-1){
+            System.out.println("---------你放弃修改房屋信息--------");
+            return;
+        }
+        //没有放弃修改，根据输入的id查找对象
+        House house = houseService.findById(updateId);//实参是updateId？？
+        if (house==null){
+            System.out.println("该房屋编号不存在！！");
+            return;
+        }
+        System.out.print("姓名（"+house.getName()+"）:");
+        String name = Utility.readString(8, "");//如果用户直接回车表示不修改信息，默认“ ”
+        if (!"".equals(name)){//name不是空的时候再修改
+            house.setName(name);
+        }
+        System.out.print("电话（（"+house.getPhone()+"））：");
+        String phone = Utility.readString(16, "");
+        if (!"".equals(phone)){
+            house.setPhone(phone);
+        }
+        System.out.println("地址("+house.getAddress()+"):");
+        String address = Utility.readString(16, "");
+        if (!"".equals(address)){
+            house.setAddress(address);
+        }
+        System.out.println("月租（"+house.getRent()+"）：");
+        //String rent = Utility.readString(8, "");
+        int rent = Utility.readInt(-1);//???为什么是-1
+        //if (!"".equals(rent)){
+            //house.setRent(Integer.parseInt(rent));//?类型转换了
+        if (rent!=-1){
+            house.setRent(rent);
+        }
+        System.out.println("状态("+house.getState()+")：");
+        String state = Utility.readString(12, "");
+        if (!"".equals(state)){
+            house.setState(state);
+        }
+        System.out.println("---------修改房屋信息成功！！--------");
+    }
+    //写一个find()查找房屋信息
+    public void findHouse() {
+        System.out.println("---------查找房屋信息--------");
+        System.out.print("请输入你要查找的id：");
+        int findId = Utility.readInt();
+        House house = houseService.findById(findId);
+        if (house!=null){//判断findById返回的值是否是空
+            System.out.println(house);
+        }else {
+            System.out.println("你查找的信息不存在");
+        }
+    }
     //写一个退出确认的方法
     public void exit() {
         char c = Utility.readConfirmSelection();//Utility方法中有这个循环确认功能，直接调用
@@ -125,13 +181,13 @@ public class HouseView {
                     addHouse();
                     break;//不要忘记break
                 case '2':
-                    System.out.println("查 找 房 屋");
+                    findHouse();
                     break;//不要忘记break
                 case '3':
                     delHouse();
                     break;//不要忘记break
                 case '4':
-                    System.out.println("修 改 房 屋 信 息");
+                    update();
                     break;//不要忘记break
                 case '5':
                     listHouses();

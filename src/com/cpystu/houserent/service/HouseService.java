@@ -27,15 +27,37 @@ public class HouseService {
         //houses[0]=new House{1,"cc",...}是错误的吗？？
     }
 
+    //findById()根据id查找房屋信息
+    public House findById(int findId){//返回值是House对象或者null
+        for (int i = 0; i <houseNums ; i++) {
+            if (findId==houses[i].getId()){
+                return houses[i];
+            }
+        }
+        return null;
+
+    }
+
     //del方法，实现删除一个房屋信息，返回一个boolean值，删除成功/失败
     public boolean del(int delId) {//del(int delId):这个方法接收的是想要删除的房间id号
+        System.out.println("houseNums 大小是" + houseNums);
         //但是房间的id不等于房屋的下标，要根据下标找到删除的房屋信息
         int index = -1;//下标
         //遍历当前数组的所有元素
         for (int i = 0; i < houseNums; i++) {
-            if (delId == houses[i].getId()) {//判断要删除的这个房屋有没有存在在数组中
+            if (houses[i] == null) { //放行就是直接可以跳到下一个断点  下一步就是 一步一步的走到下面
+                //鼠标放到上面就知道具体的内容了
+                //判空处理 防止出现 NullPointerException  空指针异常 断点要放到 执行代码上
+                // 哪个绿色的就是 开启断点调试  哪个就是放行 resume 放行就是 跳过这个断点
+                //steop over 就是下一步  执行代码
+                continue;
+            }
+            if (houses[i].getId() == delId) {//判断要删除的这个房屋有没有存在在数组中
                 //？？？要删除的房屋id是数组下标为i的元素
+                System.out.println(houses[i]); //断点 走到这里可以 看下具体是什么
+                System.out.println(houses[i].getId());
                 index = i;
+                break;
             }
         }
         if (index == -1) {//delId在数组中没有找到对应的下标，即不存在这个id？
@@ -43,9 +65,16 @@ public class HouseService {
         }
         for (int i = 0; i < houseNums - 1; i++) {
             houses[i] = houses[i + 1];//后面的元素往前移动
+            //TODO 标记明显
+            System.out.println(houses[i + 1].getName() + "移动到" + houses[i].getName()+"位置");
+            //像这种就可以 打印全部 因为不好看 最好是排查属性
+//            System.out.println(houses[i]);
+//            System.out.println(houses[i +1]);
         }
         houses[houseNums - 1] = null;//把当前存在的信息的最后一个的置空
         //houses[--houseNums]=null;
+        houseNums--;
+        System.out.println("houseNums 总个数是" + houseNums);//目前数组里有几个房屋？
         return true;
     }
 
