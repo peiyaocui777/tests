@@ -15,6 +15,7 @@ public class Test99 {
             }
             System.out.println();
         }
-
+        TestBookPrice testBookPrice = new TestBookPrice();
+//        testBookPrice.info();
     }
 }

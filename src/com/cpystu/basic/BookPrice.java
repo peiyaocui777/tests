@@ -15,7 +15,7 @@ class BookPrice {
         //在BookPrice类里面调用Book类
         Book book1 = new Book("西游记", 421);
         book1.info();
-        book1.updatePrice();
+        double price = book1.updatePrice();
         book1.info();
     }
 }
@@ -30,13 +30,15 @@ class Book {
         this.price = price;
     }
 
-    public void updatePrice() {
+    public double updatePrice() {
         if (this.price > 150) {
             this.price = 150;
-            return;
+            return price;
         }else if (this.price>100){
             this.price=price;
+            return price;
         }
+        return price;
     }
     //显示书籍情况的方法
     public void info(){

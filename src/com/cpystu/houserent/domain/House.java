@@ -13,6 +13,9 @@ public class House {
         this.rent = rent;
         this.state = state;
     }
+    public House() {
+
+    }
 
     public int getId() {
         return id;

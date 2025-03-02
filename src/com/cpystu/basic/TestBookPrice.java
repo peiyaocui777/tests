@@ -8,6 +8,9 @@ public class TestBookPrice {
         this.name=name;
         this.price=price;
     }
+    public TestBookPrice(){
+
+    }
     public void updatePrice(){
         if (this.price>150){
             this.price=150;
@@ -17,7 +20,7 @@ public class TestBookPrice {
             this.price=price;
         }
     }
-    public void info(){
+    private void info(){
         System.out.println("书名是："+this.name+"价格是："+this.price);
 
     }

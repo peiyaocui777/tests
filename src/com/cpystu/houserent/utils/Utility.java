@@ -6,6 +6,10 @@ package com.cpystu.houserent.utils;
 	处理各种情况的用户输入，并且能够按照程序员的需求，得到用户的控制台输入。
 */
 
+import com.cpystu.houserent.domain.Regist;
+import com.cpystu.houserent.service.LoginService;
+import com.cpystu.houserent.view.FirstView;
+
 import java.util.*;
 /**
 
@@ -102,6 +106,9 @@ public class Utility {
     public static String readString(int limit) {
         return readKeyBoard(limit, false);
     }
+    public static String readString() {
+        return readKeyBoard();
+    }
 
     /**
      * 功能：读取键盘输入的指定长度的字符串或默认值，如果直接回车，返回默认值，否则返回字符串
@@ -175,5 +182,78 @@ public class Utility {
 
         return line;
     }
+
+    /**
+     * 读取键盘
+     *
+     * @return {@link String }
+     */
+    private static String readKeyBoard() {
+
+        //定义了字符串
+        String line = "";
+
+        //scanner.hasNextLine() 判断有没有下一行
+        while (scanner.hasNextLine()) {
+
+            line = scanner.nextLine();//读取这一行
+
+
+        }
+
+        return line;
+    }
+
+    /**
+     * 注册
+     *
+     * @return boolean
+     */
+    public static boolean register() {
+        Scanner myScanner = new Scanner(System.in);
+        System.out.print("请设置你的账号信息：");
+        String account = myScanner.next();
+        Regist r1 = new Regist();
+        if (!"".equals(account)&& !account.isEmpty() &&account.length()<=6){
+            r1.setAccount(account);
+        }else {
+            System.out.println("账号不能为空，且长度需在0-6之间");
+            return false;
+        }
+        System.out.println("请设置你的密码");
+        String setpsw = myScanner.next();
+        if (!"".equals(setpsw)&& !setpsw.isEmpty() &&setpsw.length()<=6){
+            r1.setPsw(setpsw);
+            System.out.println("账号密码注册成功！");
+            //调用登录
+            loginuser(r1);
+            return true;
+        }else {
+            System.out.println("密码不能为空，且长度需在0-6之间");
+            return false;
+
+        }
+    }
+    public static boolean loginuser(Regist regist) {
+        Scanner myScanner = new Scanner(System.in);
+        //RegistService registService = new RegistService();
+        //Regist r2 = new Regist();
+        FirstView firstView = new FirstView();
+        System.out.print("请输入你的账号以登.录：");
+        String account2 = myScanner.next();
+        //String s = Utility.readString();
+        System.out.print("请输入你的密码：");
+        String psw2 = myScanner.next();
+        if (account2.equals(regist.getAccount())&&psw2.equals(regist.getPsw())){
+            System.out.println("登录成功！！");
+            return true;
+        }else {
+
+            System.out.println("登录失败~");
+            firstView.choice(regist);
+        }
+        return false;
+    }
+
 }
 
