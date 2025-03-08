@@ -4,11 +4,6 @@ import com.cpystu.houserent.domain.Regist;
 import com.cpystu.houserent.service.LoginService;
 import com.cpystu.houserent.service.RegistService;
 import com.cpystu.houserent.utils.Utility;
-import jdk.nashorn.internal.ir.LoopNode;
-
-import java.security.Key;
-import java.sql.SQLOutput;
-import java.util.Scanner;
 
 public class FirstView {
     boolean Loop=true;
