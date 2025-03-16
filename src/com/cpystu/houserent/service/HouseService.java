@@ -22,18 +22,11 @@ public class HouseService {
 
     //1.1使用构造器初始化houses，并指定数组大小（size）
     public HouseService(int size) {//构造器的名字与类名保持一致
-        ArrayList<House> houses1 = new ArrayList<>();
         //创建houses
         houses = new House[size];//创建HouseService对象时，指定数组大小（？？）
         //当前数组中没有信息
         houses[0] = new House(1, "join", "142", "海淀区", 2000, "未出租");
-        House house = new House();
-       /* houses[0]=new House{
-            House house1 = house;
-        };
-        houses[0]=new House[0]{1,"cc",...}*/
         //houses[0]=new House{1,"cc",...}是错误的吗？？
-        //语法问题
     }
 
     //findById()根据id查找房屋信息
