@@ -18,6 +18,8 @@ public class MyPanel extends JPanel implements KeyListener {
 
     public MyPanel() {
         hero = new Hero(100, 100);//初始化
+        //创建坦克的时候设置它的速度
+        //hero.setSpeed(3);默认为1
     }
     //调用paint方法绘图
 
@@ -27,6 +29,7 @@ public class MyPanel extends JPanel implements KeyListener {
         g.fillRect(0, 0, 1000, 750);//填充矩形，默认黑色
         //画坦克-封装到方法里面
         drawTank(hero.getX(), hero.getY(), g, hero.getDirect(), 1);
+        //keyTyped()
         //drawTank(hero.getX(),hero.getY(),g,0,0);
     }
 
@@ -88,26 +91,45 @@ public class MyPanel extends JPanel implements KeyListener {
         }
     }
 
+    /**
+     * 输入
+     *
+     * @param e e
+     */
     @Override
     public void keyTyped(KeyEvent e) {//e是对象名 通过它来调用方法
+//有文字输入
+    }
+
+    /**
+     * 按键
+     *
+     * @param e e
+     */
+    @Override
+    public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_W) {
-            hero.setDirect(0);//按下W键 坦克向上
+            hero.setDirect(0);//按下W键 坦克朝上
+            hero.moveUp();//调用moveUp方法，坦克向上移动
         } else if (e.getKeyCode() == KeyEvent.VK_D) {
             hero.setDirect(1);
+            hero.moveRight();
         } else if (e.getKeyCode() == KeyEvent.VK_S) {
             hero.setDirect(2);
+            hero.moveDown();
         } else if (e.getKeyCode() == KeyEvent.VK_A) {
             hero.setDirect(3);
+            hero.moveLeft();
         }
         //让面板重绘
         this.repaint();
     }
 
-    @Override
-    public void keyPressed(KeyEvent e) {
-
-    }
-
+    /**
+     * 密钥已释放
+     *
+     * @param e e
+     */
     @Override
     public void keyReleased(KeyEvent e) {
 

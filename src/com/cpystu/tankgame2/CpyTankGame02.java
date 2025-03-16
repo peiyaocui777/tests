@@ -18,5 +18,4 @@ public class CpyTankGame02 extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
-
 }
