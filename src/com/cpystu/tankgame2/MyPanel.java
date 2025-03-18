@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Vector;
 
 /**
  * 我的面板
@@ -13,13 +14,21 @@ import java.awt.event.KeyListener;
  */
 //为了通过WADS改变坦克的方向，使用KeyListener监听器监听键盘事件
 public class MyPanel extends JPanel implements KeyListener {
-    //定义一个坦克
+    //定义一个自己的坦克
     Hero hero = null;
-
+    //定义敌方坦克，由于敌方坦克数量多将他们放到集合里面，又因多线程这里使用Vector集合
+    Vector<EnemyTank> enemyTanks=new Vector<>();
+    int enemyTankSize=3;//用变量控制敌方坦克数量
     public MyPanel() {
         hero = new Hero(100, 100);//初始化
         //创建坦克的时候设置它的速度
         //hero.setSpeed(3);默认为1
+        //使用for循环初始化敌人的坦克
+        for(int i = 0; i < enemyTankSize; i++) {
+            EnemyTank enemyTank = new EnemyTank((100 * (i + 1)), 0);//得到坦克
+            enemyTank.setDirect(2);//设置坦克方向
+            enemyTanks.add(enemyTank);//把这个坦克放到集合里面
+        }
     }
     //调用paint方法绘图
 
@@ -27,10 +36,18 @@ public class MyPanel extends JPanel implements KeyListener {
     public void paint(Graphics g) {
         super.paint(g);
         g.fillRect(0, 0, 1000, 750);//填充矩形，默认黑色
-        //画坦克-封装到方法里面
-        drawTank(hero.getX(), hero.getY(), g, hero.getDirect(), 1);
+        //画自己坦克-封装到方法里面
+        drawTank(hero.getX(), hero.getY(), g, hero.getDirect(), 0);
         //keyTyped()
         //drawTank(hero.getX(),hero.getY(),g,0,0);
+        //for循环遍历vector画出敌人的坦克
+        for (int i = 0; i < enemyTanks.size(); i++) {
+            EnemyTank enemyTank = enemyTanks.get(i);//拿到坦克
+            //调用方法，传入参数画出敌人坦克
+            //enemyTanks是所有敌方坦克的集合，enemyTank是我们拿到的单个坦克
+            //所以获取坐标是用enemyTank
+            drawTank(enemyTank.getX(),enemyTank.getY(),g,enemyTank.getDirect(),1);
+        }
     }
 
     /**

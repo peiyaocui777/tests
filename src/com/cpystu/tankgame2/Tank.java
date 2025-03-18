@@ -1,7 +1,7 @@
 package com.cpystu.tankgame2;
 
 public class Tank {
-    private int direct;//坦克的方向
+    private int direct;//坦克的方向 默认为0
     private int speed;//设置变量控制坦克速度
     private int x;
 
